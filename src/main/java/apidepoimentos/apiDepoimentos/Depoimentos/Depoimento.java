@@ -23,8 +23,18 @@ public class Depoimento {
     private byte[] imagem;
 
     public Depoimento(DadosDepoimento dados) {
+        this.id = dados.id();
         this.depoimento = dados.depoimento();
         this.nome = dados.nome();
         this.imagem = dados.imagem();
+    }
+
+    public void AtualizacaoInfos(DadosAtualizacaoDepoimentos dados) {
+        if(dados.nome() != null) {
+            this.nome = dados.nome();
+        }
+        if(dados.imagem() != null) {
+            this.imagem = dados.imagem();
+        }
     }
 }

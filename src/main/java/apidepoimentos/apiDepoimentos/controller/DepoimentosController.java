@@ -1,9 +1,6 @@
 package apidepoimentos.apiDepoimentos.controller;
 
-import apidepoimentos.apiDepoimentos.Depoimentos.DadosDepoimento;
-import apidepoimentos.apiDepoimentos.Depoimentos.DadosListaDepoimentos;
-import apidepoimentos.apiDepoimentos.Depoimentos.Depoimento;
-import apidepoimentos.apiDepoimentos.Depoimentos.DepoimentoRepository;
+import apidepoimentos.apiDepoimentos.Depoimentos.*;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -27,5 +24,18 @@ public class DepoimentosController {
     @GetMapping
     public List<DadosListaDepoimentos> listarDepoimentos() {
         return repository.findAll().stream().map(DadosListaDepoimentos::new).toList();
+    }
+
+    @PutMapping
+    @Transactional
+    public void editarDepoimentos(@RequestBody DadosAtualizacaoDepoimentos dados ) {
+        var depoimento = repository.getReferenceById(dados.id());
+
+        depoimento.AtualizacaoInfos(dados);
+    }
+
+    @DeleteMapping
+    public void deleteDepoimentos(DadosExclusaoDepoimentos dados) {
+        System.out.println("Hello world");
     }
 }
