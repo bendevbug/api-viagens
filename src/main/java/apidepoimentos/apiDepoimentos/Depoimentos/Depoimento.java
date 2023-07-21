@@ -21,7 +21,7 @@ public class Depoimento {
     private String nome;
     private String depoimento;
     private byte[] imagem;
-
+    private Boolean ativo;
     public Depoimento(DadosDepoimento dados) {
         this.id = dados.id();
         this.depoimento = dados.depoimento();
@@ -37,4 +37,6 @@ public class Depoimento {
             this.imagem = dados.imagem();
         }
     }
+
+
 }

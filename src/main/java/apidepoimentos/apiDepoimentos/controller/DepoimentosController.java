@@ -34,8 +34,9 @@ public class DepoimentosController {
         depoimento.AtualizacaoInfos(dados);
     }
 
-    @DeleteMapping
-    public void deleteDepoimentos(DadosExclusaoDepoimentos dados) {
-        System.out.println("Hello world");
+    @DeleteMapping("/{id}")
+    @Transactional
+    public void deleteDepoimentos(@PathVariable Long id) {
+        repository.deleteById(id);
     }
 }
